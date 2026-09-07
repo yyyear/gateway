@@ -1,0 +1,31 @@
+name: Deploy to Remote Server
+
+on:
+  push:
+    branches: [main] # 当推送代码到主分支时触发
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest # 或者使用你自定义的 runner 标签
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+          cache: true
+
+      - name: Build Linux binary
+        run: |
+          CGO_ENABLED=0
+          GOOS=linux
+          GOARCH=amd64
+#          go mod tidy
+#          go build -o router .
+#
+#          pwd
+#          cp router /root/router
+#          chmod +x /root/router/router
+#          ls .

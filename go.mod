@@ -8,7 +8,7 @@ require (
 	github.com/panjf2000/gnet/v2 v2.10.0
 	github.com/yyyear/RouterModel v1.0.1
 	github.com/yyyear/YY v1.5.8
-	github.com/yyyear/natsClient v1.0.2
+	github.com/yyyear/natsClient v1.0.3
 )
 
 require (

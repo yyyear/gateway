@@ -1,0 +1,25 @@
+# Gitea Actions runner configuration for the Router project.
+# The instance URL, registration token, name, and labels are supplied during
+# registration; credentials are intentionally not stored in this file.
+
+runner:
+  file: ".gitea/.runner"
+  capacity: 1
+  timeout: "30m"
+  labels:
+    - "self-hosted"
+    - "linux"
+    - "x86_64"
+    - "go"
+
+container:
+  network: "bridge"
+  privileged: false
+  valid_volumes: []
+
+cache:
+  enabled: true
+  dir: ".gitea/cache"
+
+log:
+  level: "info"

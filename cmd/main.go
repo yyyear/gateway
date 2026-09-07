@@ -8,6 +8,7 @@ import (
 	"os"
 	"os/signal"
 	"strconv"
+	"strings"
 	"syscall"
 	"time"
 
@@ -83,8 +84,13 @@ func main() {
 	}
 
 	routerModel = RouterModel.NewRouter(RouterModel.GameGateway, id, "192.168.0.240:8080", "wss")
+	servers := []string{
+		"nats://127.0.0.1:1224",
+		"nats://127.0.0.1:1223",
+		"nats://local.cardsvault.net:4222",
+	}
 
-	err = gateway.BeginRouterService(routerModel, func(msg *nats.Msg) {
+	err = gateway.BeginRouterService(routerModel, strings.Join(servers, ","), func(msg *nats.Msg) {
 		YY.Debug("---", msg.Subject)
 		_ = handlePool.Submit(func() {
 			g, token := RouterModel.Splite(msg.Subject)

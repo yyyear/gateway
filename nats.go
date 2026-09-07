@@ -86,13 +86,13 @@ func parseRouterIndex(raw json.RawMessage) (string, error) {
 	return strconv.FormatUint(numericID, 10), nil
 }
 
-func BeginRouterService(router *RouterModel.Router, handle func(msg *nats.Msg)) error {
+func BeginRouterService(router *RouterModel.Router, natsURL string, handle func(msg *nats.Msg)) error {
 	if router == nil {
 		return errors.New("gateway: router is nil")
 	}
 
 	// Start NATS service.
-	client := nc.NewClient("local.cardsvault.net", "4222")
+	client := nc.NewClient(natsURL)
 	if err := client.Connect(); err != nil {
 		return err
 	}
