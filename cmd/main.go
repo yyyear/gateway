@@ -1,8 +1,6 @@
 package main
 
 import (
-	"Router/gateway"
-	"Router/gateway/websocket"
 	"context"
 	"errors"
 	"os"
@@ -11,6 +9,10 @@ import (
 	"strings"
 	"syscall"
 	"time"
+
+	"github.com/yyyear/gateway/websocket"
+
+	"github.com/yyyear/gateway"
 
 	"github.com/yyyear/RouterModel"
 
