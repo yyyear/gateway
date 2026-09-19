@@ -1,4 +1,4 @@
-module Router/gateway
+module github.com/yyyear/gateway
 
 go 1.27
 
