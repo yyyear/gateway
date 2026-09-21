@@ -32,6 +32,7 @@ github.com/yyyear/RouterModel v1.0.1 h1:4pgHuPpozVr0ozlOw+2j7diYd/1Vmj6hLfvbcgqN
 github.com/yyyear/RouterModel v1.0.1/go.mod h1:o3vl/MEffe3Gm31zrGOs8UWVi31+dYAtyWg2hw/L8xI=
 github.com/yyyear/YY v1.5.8 h1:NnGChec2YotKatApP7Daf9aizSMpznn4UtI2WrhWDbc=
 github.com/yyyear/YY v1.5.8/go.mod h1:jrgKrC01sl1OB1pFaBNYZWe7g0xFv7SNhy3I80HyopU=
+github.com/yyyear/YY v1.5.10/go.mod h1:jrgKrC01sl1OB1pFaBNYZWe7g0xFv7SNhy3I80HyopU=
 github.com/yyyear/natsClient v1.0.2 h1:GrTDZHD65eUqKs0dksX7e923Hy4piDEm7mgivxyZ1ow=
 github.com/yyyear/natsClient v1.0.2/go.mod h1:dGlt6/o4ffT3srz5NLwWp6eXdDHrjadbW4mzyfJRr88=
 github.com/yyyear/natsClient v1.0.3 h1:2vQZ3H0a9CRX/zfmoiwBXQ765b7F1iOkw4BuTP/g+bc=

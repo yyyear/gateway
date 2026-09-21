@@ -1,4 +1,4 @@
-module github.com/yyyear/gateway
+module gateway
 
 go 1.27
 
@@ -7,7 +7,7 @@ require (
 	github.com/panjf2000/ants/v2 v2.12.1
 	github.com/panjf2000/gnet/v2 v2.10.0
 	github.com/yyyear/RouterModel v1.0.1
-	github.com/yyyear/YY v1.5.8
+	github.com/yyyear/YY v1.5.10
 	github.com/yyyear/natsClient v1.0.3
 )
 
