@@ -86,15 +86,15 @@ func parseRouterIndex(raw json.RawMessage) (string, error) {
 	return strconv.FormatUint(numericID, 10), nil
 }
 
-func BeginRouterService(router *RouterModel.Router, natsURL string, handle func(msg *nats.Msg)) error {
+func BeginRouterService(router *RouterModel.Router, natsURL string, handle func(msg *nats.Msg)) (*nc.NATS, error) {
 	if router == nil {
-		return errors.New("gateway: router is nil")
+		return nil, errors.New("gateway: router is nil")
 	}
 
 	// Start NATS service.
 	client := nc.NewClient(natsURL)
 	if err := client.Connect(); err != nil {
-		return err
+		return nil, err
 	}
 
 	ctx, cancel := context.WithCancel(context.Background())
@@ -104,7 +104,7 @@ func BeginRouterService(router *RouterModel.Router, natsURL string, handle func(
 		natsMu.Unlock()
 		cancel()
 		client.Close()
-		return errors.New("gateway: router service is already running")
+		return nil, errors.New("gateway: router service is already running")
 	}
 	natsClient = client
 	registeredRouter = &RouterModel.Router{ID: router.ID, Type: router.Type}
@@ -117,11 +117,11 @@ func BeginRouterService(router *RouterModel.Router, natsURL string, handle func(
 
 	if err := subRouterStatus(ctx, client, router, handle); err != nil {
 		if stopErr := StopRouterService(); stopErr != nil {
-			return errors.Join(err, stopErr)
+			return nil, errors.Join(err, stopErr)
 		}
-		return err
+		return nil, err
 	}
-	return nil
+	return client, nil
 }
 
 func subRouterStatus(ctx context.Context, client *nc.NATS, router *RouterModel.Router, handle func(msg *nats.Msg)) error {
